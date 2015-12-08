@@ -1,4 +1,4 @@
-package java76.pms.exception;
+package wd.exception;
 
 public class DaoException extends RuntimeException {
 

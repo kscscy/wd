@@ -1,4 +1,4 @@
-package java76.pms.util;
+package wd.util;
 
 public class MultipartHelper {
   

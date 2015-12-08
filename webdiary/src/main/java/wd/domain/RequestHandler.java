@@ -1,4 +1,4 @@
-package java76.pms.domain;
+package wd.domain;
 
 import java.lang.reflect.Method;
 

@@ -1,4 +1,4 @@
-package java76.pms.controller;
+package wd.controller;
 
 import java.util.HashMap;
 
@@ -11,14 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java76.pms.dao.StudentDao;
-import java76.pms.domain.Student;
+import wd.dao.UserDao;
+import wd.domain.User;
 
 @Controller
 @RequestMapping("/auth/*")
 public class AuthController {
 
-	@Autowired StudentDao studentDao; // 인터페이스를 구현한 객체 주소
+	@Autowired UserDao userDao; // 인터페이스를 구현한 객체 주소
 	
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public String loginform(){
@@ -27,38 +27,38 @@ public class AuthController {
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public String login(
-			String email,
+			String id,
 			String password,
-			String saveEmail,
+			String saveId,
 			HttpServletResponse response,
 			HttpSession session) {
 		response.setContentType("text/plain;charset=UTF-8");
 		
-		Cookie emailCookie = null;
+		Cookie idCookie = null;
 
-		if (saveEmail != null) { 
-			emailCookie = new Cookie("email", email);
-			emailCookie.setMaxAge(60 * 60 * 24 * 15);
-			response.addCookie(emailCookie);
+		if (saveId != null) { 
+			idCookie = new Cookie("id", id);
+			idCookie.setMaxAge(60 * 60 * 24 * 15);
+			response.addCookie(idCookie);
 			
 		} else {
-			emailCookie = new Cookie("email", "");
-			emailCookie.setMaxAge(0); 
+			idCookie = new Cookie("id", "");
+			idCookie.setMaxAge(0); 
 			
 		}
-		response.addCookie(emailCookie);
+		response.addCookie(idCookie);
 		
 		HashMap<String, Object> paramMap = new HashMap<>();
-		paramMap.put("email", email);
+		paramMap.put("id", id);
 		paramMap.put("password", password);
 		
-		Student student = studentDao.login(paramMap);
+		User user = userDao.login(paramMap);
 		
-		if (student == null) {
+		if (user == null) {
 			session.invalidate(); 
 			return "/auth/LoginFail";
 		}
-		session.setAttribute("loginUser", student);
+		session.setAttribute("loginUser", user);
 		return "redirect:../board/list.do";
 	}
 	
