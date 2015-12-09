@@ -11,15 +11,15 @@ public class User implements Serializable{
 	protected String name;
 	protected String email;
 	protected String password;
-	protected String photo;
+	protected String uphoto;
 	
 	public User() {
 	}
 
 	@Override
 	public String toString() {
-	return "User [no=" + no + ", id=" + id + ", name=" + name + ", email=" + email + ", pwd=" + password + ", photo=" + photo
-		+ "]";
+	return "User [no=" + no + ", id=" + id + ", name=" + name + ", email=" + email + ", password=" + password
+		+ ", uphoto=" + uphoto + "]";
 	}
 
 	public int getNo() {
@@ -54,21 +54,21 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	public String getPwd() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPwd(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getUphoto() {
+		return uphoto;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setUphoto(String uphoto) {
+		this.uphoto = uphoto;
 	}
-	
+
 
 }

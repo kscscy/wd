@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wd.dao.EventDao">
+ 
+  <select id="selectList" resultType="event" parameterType="map">
+    select 
+      no,
+   		id,
+      title,
+      content,
+      credate
+     from event, user
+     where event.id = user.id
+     order by
+     <choose>
+      <when test="keyword == 'credate'">credate </when>
+      <otherwise>no </otherwise>
+     </choose>
+     <choose>
+      <when test="align == 'asc'">asc</when>
+      <otherwise>desc</otherwise>
+     </choose>
+     limit #{startIndex},#{length}
+     
+  </select>
+  <insert id="insert" parameterType="event">
+    insert into event(id,title,content,credate,ephoto) 
+    values(#{id},#{title},#{content},#{credate},#{ephoto})
+  </insert>
+  
+  <delete id="delete" parameterType="map">
+    delete from event
+    where no=#{no}
+  </delete>
+  
+  <update id="update" parameterType="event">
+    update event set 
+      title=#{title},
+      content=#{content},
+      credate=#{credate},
+      ephoto=#{ephoto}
+    where no=#{no}
+  </update>
+  
+  <select id="selectOne" resultType="event" parameterType="int">
+    select 
+      no,
+      title,
+      content,
+      credate,
+      ephoto
+     from event
+     where no=#{no}
+     
+  </select>
+</mapper>

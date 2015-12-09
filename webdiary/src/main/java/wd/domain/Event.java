@@ -12,16 +12,18 @@ public class Event implements Serializable{
   protected String title;
   protected Date creDate;
   protected String content;
-  protected String photo;
+  protected String ephoto;
 	
 	public Event() {
 	}
 
+
 	@Override
 	public String toString() {
 	return "Event [no=" + no + ", id=" + id + ", title=" + title + ", creDate=" + creDate + ", content=" + content
-		+ ", photo=" + photo + "]";
+		+ ", ephoto=" + ephoto + "]";
 	}
+
 
 	public int getNo() {
 		return no;
@@ -63,13 +65,12 @@ public class Event implements Serializable{
 		this.content = content;
 	}
 
-	public String getPhoto() {
-		return photo;
+	public String getEphoto() {
+		return ephoto;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setEphoto(String ephoto) {
+		this.ephoto = ephoto;
 	}
-
 
 }
