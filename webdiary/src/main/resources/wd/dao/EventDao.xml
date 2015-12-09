@@ -6,17 +6,17 @@
  
   <select id="selectList" resultType="event" parameterType="map">
     select 
-      no,
-   		id,
-      title,
-      content,
-      credate
-     from event, user
-     where event.id = user.id
+      event.no,
+   		event.id,
+      event.title,
+      event.content,
+      event.creDate
+     from event
+     where event.id = #{id}
      order by
      <choose>
-      <when test="keyword == 'credate'">credate </when>
-      <otherwise>no </otherwise>
+      <when test="keyword == 'no'">no </when>
+      <otherwise>creDate </otherwise>
      </choose>
      <choose>
       <when test="align == 'asc'">asc</when>
@@ -26,8 +26,8 @@
      
   </select>
   <insert id="insert" parameterType="event">
-    insert into event(id,title,content,credate,ephoto) 
-    values(#{id},#{title},#{content},#{credate},#{ephoto})
+    insert into event(id,title,content,creDate,ephoto) 
+    values(#{id},#{title},#{content},#{creDate},#{ephoto})
   </insert>
   
   <delete id="delete" parameterType="map">
@@ -39,7 +39,7 @@
     update event set 
       title=#{title},
       content=#{content},
-      credate=#{credate},
+      creDate=#{creDate},
       ephoto=#{ephoto}
     where no=#{no}
   </update>
@@ -49,7 +49,7 @@
       no,
       title,
       content,
-      credate,
+      creDate,
       ephoto
      from event
      where no=#{no}

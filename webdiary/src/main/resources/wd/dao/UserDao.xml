@@ -29,7 +29,7 @@
   </insert>
   
   <delete id="delete" parameterType="String">
-    delete from user where id=#{id}
+    delete from user where id=#{id} and pwd=sha1(#{password})
   </delete>
   
   <update id="update" parameterType="user">

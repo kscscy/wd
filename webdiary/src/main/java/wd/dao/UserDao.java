@@ -11,7 +11,7 @@ public interface UserDao {
 	
 	int insert(User user);
 	
-	int delete(User user);
+	int delete(Map<String, Object> paramMap);
 	
 	int update(User user);
 	
