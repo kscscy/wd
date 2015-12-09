@@ -59,7 +59,7 @@ public class AuthController {
 			return "/auth/LoginFail";
 		}
 		session.setAttribute("loginUser", user);
-		return "redirect:../board/list.do";
+		return "redirect:../event/list.do";
 	}
 	
 	@RequestMapping("logout")

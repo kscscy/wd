@@ -8,11 +8,11 @@
 <body>
 <h1>로그인</h1>
 <form action="login.do" method="post">
-이메일: <input type="text" name="email" value="${cookie.email.value}"><br>
+아이디: <input type="text" name="id" value="${cookie.id.value}"><br>
 암호: <input type="password" name="password"><br>
 <input type="submit" value="로그인"><br>
-<input type="checkbox" name="saveEmail"
- ${(empty cookie.email)?"":"checked"}>이메일 저장<br>
+<input type="checkbox" name="saveId"
+ ${(empty cookie.email)?"":"checked"}>아이디 저장<br>
 </form>
 </body>
 </html>
