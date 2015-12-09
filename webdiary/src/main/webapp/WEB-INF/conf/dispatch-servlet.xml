@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- 페이지 컨트롤러를 찾아 객체를 생성한다. 단,DAO와 Service 꽌련 객체는 제외해야 한다. -->
-	<context:component-scan base-package="java76.pms.controller" />
+	<context:component-scan base-package="wd.controller" />
 
 	<!-- @RequestMapping등 웹 관련 애노테이션을 처리할 객체를 등록한다. -->
 	<mvc:annotation-driven />

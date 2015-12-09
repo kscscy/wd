@@ -12,16 +12,16 @@
 			@Controller?
 			스프링 페이지 컨트롤러와 DAO와 서비스 객체를 구분하기 위해 정의한 애노테이션이다.		
 	-->
-  <context:component-scan base-package="java76.pms">
+  <context:component-scan base-package="wd">
   	<!-- java76.pms.controller 패키지의 모든 클래스를 제외한다. -->
   	<context:exclude-filter type="regex" 
-  													expression="java76.pms.controller.*"/>
+  													expression="wd.controller.*"/>
   </context:component-scan>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath*:java76/pms/dao/*Dao.xml" /> <!-- 경로 -->
-		<property name="typeAliasesPackage" value="java76.pms.domain" /> <!-- 패키지 -->
+		<property name="mapperLocations" value="classpath*:wd/dao/*Dao.xml" /> <!-- 경로 -->
+		<property name="typeAliasesPackage" value="wd.domain" /> <!-- 패키지 -->
 	</bean>
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -34,7 +34,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- DAO 인터페이스가 선언된 패키지 지정한다. -->
-  	<property name="basePackage" value="java76.pms.dao" />
+  	<property name="basePackage" value="wd.dao" />
 	</bean>
 
 </beans>
